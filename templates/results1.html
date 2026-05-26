@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+</head>
+<body>
+    <h1>Prediction Results</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Image Name</th>
+                <th>Is Poisoned</th>
+                <th>Real Score</th>
+                <th>Adversarial Score</th>
+                <th>Reconstruction Error</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in results %}
+            <tr>
+                <td>{{ result.image_name }}</td>
+                <td>{{ 'Yes' if result.is_poisoned else 'No' }}</td>
+                <td>{{ result.real_score }}</td>
+                <td>{{ result.adv_score }}</td>
+                <td>{{ result.reconstruction_error }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="/">Go back to upload more images</a>
+</body>
+</html>

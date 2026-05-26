@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Images</title>
+</head>
+<body>
+    <h1>Upload Images to Check for Poisoning</h1>
+    <form action="/predict" method="post" enctype="multipart/form-data">
+        <label for="images">Choose images:</label>
+        <input type="file" name="images" accept="image/*" multiple required><br><br>
+        <button type="submit">Upload and Predict</button>
+    </form>
+</body>
+</html>

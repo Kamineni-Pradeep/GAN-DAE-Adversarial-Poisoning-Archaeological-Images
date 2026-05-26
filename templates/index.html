@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Images</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center; /* Centers horizontally */
+            align-items: center; /* Centers vertically */
+            height: 100vh; /* Full viewport height */
+            background-image: url('https://img.freepik.com/premium-photo/digital-data-hand_555601-16445.jpg'); /* Replace with your image URL */
+            background-size: cover; /* Ensures the image covers the entire viewport */
+            background-repeat: no-repeat;
+            background-position: center; /* Centers the image */
+            color: white;
+        }
+        h1 {
+            margin-top: 0;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+        form {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+        label, button {
+            font-size: 1.2em;
+        }
+        input {
+            margin: 10px 0;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            overflow: hidden;
+        }
+        footer span {
+            display: inline-block;
+            white-space: nowrap;
+            animation: scroll-left 10s linear infinite;
+            font-size: 1em;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        @keyframes scroll-left {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <form action="/predict" method="post" enctype="multipart/form-data">
+        <h1>Upload Images to Check for Poisoning</h1>
+        <label for="images">Choose images:</label>
+        <input type="file" name="images" accept="image/*" multiple required><br><br>
+        <button type="submit">Upload and Predict</button>
+    </form>
+    <footer>
+        <span>© 2021-25 Final Year Batch 13 | All Rights Reserved</span>
+    </footer>
+</body>
+</html>

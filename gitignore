@@ -1,0 +1,41 @@
+# Virtual Environments
+env/
+env311/
+venv/
+.venv/
+ENV/
+
+# Model files (too large for GitHub)
+Models/
+*.h5
+*.pkl
+*.pt
+*.pth
+
+# Uploaded & generated images (runtime files)
+static/uploads/
+static/adversarial/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Jupyter Notebooks checkpoints
+.ipynb_checkpoints/
+
+# VS Code settings
+.vscode/
+
+# Environment variables
+.env
+*.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center; /* Centers horizontally */
+            align-items: center; /* Centers vertically */
+            height: 100vh; /* Full viewport height */
+            background-image: url('https://130e178e8f8ba617604b-8aedd782b7d22cfe0d1146da69a52436.ssl.cf1.rackcdn.com/api-flaws-put-ai-models-at-risk-data-poisoning-showcase_image-4-a-23773.jpg'); /* Replace with your image URL */
+            background-size: cover; /* Ensures the image covers the entire viewport */
+            background-repeat: no-repeat;
+            background-position: center; /* Centers the image */
+            color: white;
+            position: relative; /* For positioning the download button */
+        }
+        .parent-card {
+            background: rgba(0, 0, 0, 0.7);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            color: white;
+            width: 100%;
+            max-width: 1200px;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+            gap: 20px; /* Adds space between cards */
+            margin-top: 50px; /* To prevent cards from touching the header */
+        }
+        .card {
+            background: #333;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+        }
+        .poisoned {
+            color: red;
+        }
+        .not-poisoned {
+            color: green;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            font-size: 1.5em;
+        }
+        .popup.active {
+            display: flex;
+        }
+        .popup-content {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .popup button {
+            background-color: red;
+            color: white;
+            padding: 10px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            overflow: hidden;
+        }
+        footer span {
+            display: inline-block;
+            white-space: nowrap;
+            animation: scroll-left 10s linear infinite;
+            font-size: 1em;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        @keyframes scroll-left {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="parent-card">
+        <h1>Prediction Results</h1>
+        <div class="container">
+            {% for result in results %}
+            <div class="card">
+                <img src="{{ result.Image_Url }}" alt="{{ result.Image_Name }}" style="width: 100%; height: auto;">
+                <div class="card-body">
+                    <p><strong>Image Name:</strong> {{ result.Image_Name }}</p>
+                    <p>
+                        <strong>Is Poisoned:</strong> 
+                        <span class="{{ 'poisoned' if result.Is_Poisoned else 'not-poisoned' }}">
+                            {{ 'Yes' if result.is_poisoned else 'No' }}
+                        </span>
+                    </p>
+                    <p><strong>Real Score:</strong> {{ result.Real_Score }}</p>
+                    <p><strong>Adversarial Score:</strong> {{ result.Adversarial_Score }}</p>
+                    <p><strong>Reconstruction Error:</strong> {{ result.Reconstruction_Error }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {% if any_poisoned %}
+    <!-- Popup to notify the user about poisoned images -->
+    <div class="popup active" id="poisonedPopup">
+        <div class="popup-content">
+            <p>The uploaded dataset is poisoned. Please review the results carefully.</p>
+            <button onclick="closePopup()">Close</button>
+        </div>
+    </div>
+    {% endif %}
+
+    <script>
+        // Function to close the popup
+        function closePopup() {
+            document.getElementById('poisonedPopup').classList.remove('active');
+        }
+    </script>
+
+<footer>
+    <span>© 2021-25 Final Year Batch 13 | All Rights Reserved</span>
+</footer>
+</body>
+</html>
