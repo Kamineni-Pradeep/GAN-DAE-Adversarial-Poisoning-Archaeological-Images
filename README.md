@@ -21,7 +21,7 @@ This project presents a defense system that:
 - Provides a **Flask web application** for real-time image poisoning detection
 
 ---
-<img width="387" height="234" alt="image" src="https://github.com/user-attachments/assets/be2004a3-cebc-4c40-b48f-52e994712a9c" /> <img width="396" height="162" alt="image" src="https://github.com/user-attachments/assets/ee9d187c-d86f-4373-90c1-6eb82d9fd916" /> <img width="390" height="211" alt="image" src="https://github.com/user-attachments/assets/102fe221-4686-46ba-81ed-36aba00c491e" />
+<img width="300" height="234" alt="image" src="https://github.com/user-attachments/assets/be2004a3-cebc-4c40-b48f-52e994712a9c" /> <img width="300" height="234" alt="image" src="https://github.com/user-attachments/assets/ee9d187c-d86f-4373-90c1-6eb82d9fd916" /> <img width="300" height="234" alt="image" src="https://github.com/user-attachments/assets/102fe221-4686-46ba-81ed-36aba00c491e" />
 
 
 
